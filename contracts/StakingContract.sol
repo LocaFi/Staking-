@@ -1,24 +1,24 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.19;
 
-import "@thirdweb-dev/contracts/base/ERC1155Base.sol";
+import "@thirdweb-dev/contracts/base/Staking20Base.sol";
 
-contract StakingContract is ERC1155Base {
-
-      constructor(
+contract StakingContract is Staking20Base {
+    constructor(
+        uint80 _timeUnit,
         address _defaultAdmin,
-        string memory _name,
-        string memory _symbol,
-        address _royaltyRecipient,
-        uint128 _royaltyBps
-    )
-        ERC1155Base(
-            _defaultAdmin,
-            _name,
-            _symbol,
-            _royaltyRecipient,
-            _royaltyBps
-        )
-    {}
-
+        uint256 _rewardRatioNumerator,
+        uint256 _rewardRatioDenominator,
+        address _stakingToken,
+        address _rewardToken,
+        address _nativeTokenWrapper
+    ) Staking20Base(
+        _timeUnit,
+        _defaultAdmin,
+        _rewardRatioNumerator,
+        _rewardRatioDenominator,
+        _stakingToken,
+        _rewardToken,
+        _nativeTokenWrapper
+    ) {}
 }
